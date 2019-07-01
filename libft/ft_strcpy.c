@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcoetzee <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/01 09:21:26 by tcoetzee          #+#    #+#             */
-/*   Updated: 2019/07/01 09:48:37 by tcoetzee         ###   ########.fr       */
+/*   Created: 2019/05/24 09:35:40 by tcoetzee          #+#    #+#             */
+/*   Updated: 2019/05/24 17:14:09 by tcoetzee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"	/*#include directive tells the preprocessor to GRAB text 						of a file and place it directly into the current file!!*/
+#include "libft.h"
 
-int	ft_printf(const char *format, ...)
+char	*ft_strcpy(char *dst, const char *src)
 {
+	int	i;
 
+	i = -1;
+	while (*(src + ++i))
+		*(dst + i) = *(src + i);
+	*(dst + i) = '\0';
+	return (dst);
 }

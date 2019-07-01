@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcoetzee <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/01 09:21:26 by tcoetzee          #+#    #+#             */
-/*   Updated: 2019/07/01 09:48:37 by tcoetzee         ###   ########.fr       */
+/*   Created: 2019/05/21 14:09:55 by tcoetzee          #+#    #+#             */
+/*   Updated: 2019/05/26 12:15:53 by tcoetzee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"	/*#include directive tells the preprocessor to GRAB text 						of a file and place it directly into the current file!!*/
+#include "libft.h"
 
-int	ft_printf(const char *format, ...)
+void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
+	size_t	i;
+	char	*ptr;
+	char	*ptr2;
 
+	ptr = dst;
+	ptr2 = (char *)src;
+	i = -1;
+	if (ptr == NULL && ptr2 == NULL)
+		return (0);
+	while (++i < n)
+		*(ptr + i) = *(ptr2 + i);
+	return (dst);
 }

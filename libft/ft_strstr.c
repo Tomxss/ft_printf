@@ -1,18 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcoetzee <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/01 09:21:26 by tcoetzee          #+#    #+#             */
-/*   Updated: 2019/07/01 09:48:37 by tcoetzee         ###   ########.fr       */
+/*   Created: 2019/05/24 19:08:03 by tcoetzee          #+#    #+#             */
+/*   Updated: 2019/05/26 12:16:56 by tcoetzee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"	/*#include directive tells the preprocessor to GRAB text 						of a file and place it directly into the current file!!*/
+#include "libft.h"
 
-int	ft_printf(const char *format, ...)
+char	*ft_strstr(const char *haystack, const char *needle)
 {
+	int	i;
+	int	j;
 
+	i = 0;
+	if (needle[0] == '\0')
+		return ((char *)haystack);
+	while (haystack[i] != '\0')
+	{
+		j = 0;
+		while (haystack[i + j] == needle[j])
+		{
+			if (needle[j + 1] == '\0')
+			{
+				return ((char *)haystack + i);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

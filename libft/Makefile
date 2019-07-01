@@ -5,42 +5,34 @@
 #                                                     +:+ +:+         +:+      #
 #    By: tcoetzee <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/07/01 09:50:24 by tcoetzee          #+#    #+#              #
-#    Updated: 2019/07/01 09:50:44 by tcoetzee         ###   ########.fr        #
+#    Created: 2019/05/21 12:12:08 by tcoetzee          #+#    #+#              #
+#    Updated: 2019/06/18 13:40:51 by tcoetzee         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
-FLAGS = -Wall -Wextra -Werror
-SRC = $(wildcard [ft_-ex_]*.c)
-OBJ = $(SRC:%.c=%.o)
+NAME	= libft.a
+CFLAGS	= -Wall -Werror -Wextra -I. -c
+SRC	= $(wildcard ft_*.c)
+OBJ	= $(SRC:%.c=%.o) #everything in SRC, BUT change .c to .o
 
-all: $(NAME)
+.PHONY: clean
 
+all: $(NAME)# Does all exist, if it does is it up-to-date
+	
 $(NAME): $(OBJ)
-	@echo "Creating Library with indices..."
 	@ar rcs $(NAME) $(OBJ)
-	@echo "Done."
-
+	@echo "Creating library..."	
 $(OBJ): $(SRC)
-	@echo "Compiling Files..."
-	@gcc $(FLAGS) -c $(SRC)
-	@echo "Done."
+	@gcc $(CFLAGS) $(SRC)
 
-clean:
-	@rm -f $(OBJ)
-	@echo "Cleaning output files..."
-
-norme: clean
-	@norminette $(SRC) $(Name)
-	@echo "Checking Normes..."
+clean: 
+	@rm -f $(OBJ)	# remove output files
+	@echo "cleaning output files..."
 
 fclean: clean
-	@rm -f $(NAME)
-	@echo "Removing Library..."
+	@rm -f $(NAME)	# remove libft.a
+	@echo "Removing library..."
 
 re: fclean all
-
-
 
 

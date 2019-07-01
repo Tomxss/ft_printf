@@ -1,18 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strjoinchr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcoetzee <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/01 09:21:26 by tcoetzee          #+#    #+#             */
-/*   Updated: 2019/07/01 09:48:37 by tcoetzee         ###   ########.fr       */
+/*   Created: 2019/06/18 13:59:47 by tcoetzee          #+#    #+#             */
+/*   Updated: 2019/06/18 13:59:50 by tcoetzee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"	/*#include directive tells the preprocessor to GRAB text 						of a file and place it directly into the current file!!*/
+#include "libft.h"
 
-int	ft_printf(const char *format, ...)
+char	*ft_strjoinchr(char const *s1, char c)
 {
+	char	*new_str;
+	size_t	i;
+	size_t	s1_len;
 
+	if (!s1 || !c)
+		return (NULL);
+	s1_len = ft_strlen(s1);
+	new_str = ft_strnew(s1_len + 1);
+	if (!new_str)
+		return (NULL);
+	i = -1;
+	while (++i < s1_len)
+		*(new_str + i) = *(s1 + i);
+	*(new_str + i) = c;
+	return (new_str);
 }

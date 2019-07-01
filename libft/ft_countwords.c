@@ -1,18 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_countwords.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcoetzee <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/01 09:21:26 by tcoetzee          #+#    #+#             */
-/*   Updated: 2019/07/01 09:48:37 by tcoetzee         ###   ########.fr       */
+/*   Created: 2019/05/25 16:40:33 by tcoetzee          #+#    #+#             */
+/*   Updated: 2019/05/25 16:43:29 by tcoetzee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"	/*#include directive tells the preprocessor to GRAB text 						of a file and place it directly into the current file!!*/
-
-int	ft_printf(const char *format, ...)
+int	ft_countwords(char const *str, char c)
 {
+	int	count;
+	int	i;
 
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		while (str[i] == c)
+			i++;
+		if (str[i] != c && str[i] != '\0')
+			count++;
+		while (str[i] != c && str[i] != '\0')
+			i++;
+	}
+	return (count);
 }

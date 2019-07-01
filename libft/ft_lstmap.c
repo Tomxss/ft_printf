@@ -1,18 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcoetzee <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/01 09:21:26 by tcoetzee          #+#    #+#             */
-/*   Updated: 2019/07/01 09:48:37 by tcoetzee         ###   ########.fr       */
+/*   Created: 2019/05/26 14:00:27 by tcoetzee          #+#    #+#             */
+/*   Updated: 2019/05/26 14:43:21 by tcoetzee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"	/*#include directive tells the preprocessor to GRAB text 						of a file and place it directly into the current file!!*/
+#include "libft.h"
 
-int	ft_printf(const char *format, ...)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
+	t_list	*new;
+	t_list	*list;
 
+	if (!lst)
+		return (NULL);
+	list = f(lst);
+	new = list;
+	while (lst->next)
+	{
+		lst = lst->next;
+		if (!(list->next = f(lst)))
+		{
+			free(list->next);
+			return (NULL);
+		}
+		list = list->next;
+	}
+	return (new);
 }

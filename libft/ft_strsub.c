@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tcoetzee <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/01 09:21:26 by tcoetzee          #+#    #+#             */
-/*   Updated: 2019/07/01 09:48:37 by tcoetzee         ###   ########.fr       */
+/*   Created: 2019/05/25 16:06:21 by tcoetzee          #+#    #+#             */
+/*   Updated: 2019/05/25 17:07:53 by tcoetzee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"	/*#include directive tells the preprocessor to GRAB text 						of a file and place it directly into the current file!!*/
+#include "libft.h"
 
-int	ft_printf(const char *format, ...)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
+	char	*new_str;
+	size_t	i;
 
+	if (!s)
+		return (NULL);
+	new_str = ft_strnew(len);
+	if (!new_str)
+		return (NULL);
+	i = 0;
+	while (i < len)
+		*(new_str + i++) = *(s + start++);
+	return (new_str);
 }
